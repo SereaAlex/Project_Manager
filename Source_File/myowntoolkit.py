@@ -192,7 +192,7 @@ while program_on:
 [4.f] Type "pwd" to check the location that you are
 [4.g] Type "ls" to check the contents of the directory that you are
 [4.h] Type "cat" to read the contents of the file/s that you have
-[4.i] Type "testing" for easy acces to test your programs (for now, only python)
+[4.i] Type "testing" for easy acces to test your programs (for now, only python) 
 
 (If you wonder why there is no "cd", \n it's because it doesn't work for now -.-")
               """,0.0001)
