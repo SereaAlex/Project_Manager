@@ -1,7 +1,6 @@
 from menu_item import menu_item
 from Menu import Menu
 import os
-import glob
 import time
 
 def slow_print(text, delay=0.01):
