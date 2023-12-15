@@ -1,27 +1,55 @@
 from doctest import OPTIONFLAGS_BY_NAME
 import os
 import inquirer
-
+import Menu
+import time
 def clear_screen():
     
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def slow_print(text, delay=0.01):
+    
+    for char in text:
+        
+        print(char, end='', flush=True)
+        time.sleep(delay)
+        
+    print()
+
+def PrintMenu(name:str):
+    clear_screen()
+    LOGO = Menu.GetMenuByName(name).logo
+    slow_print(LOGO,delay=0.001)
+    menu_item.PrintAll(name)
+
+def ChangeMenu(name:str):
+    clear_screen()
+    menu_item.Curr_Menu = name
+    PrintMenu(name)
+
+def Home():
+        
+    ChangeMenu("MainMenu")
+
 class SomeOtherFuncs:
     def Func5():
-    
-        rm_input = input("Do you want to remove a file or a directory?: ")
+        
+        clear_screen()
+        rm_input = inquirer.list_input("Do you want to remove a file or a directory?: ", choices = ['file', 'directory'])
         
         if rm_input == "file":
-            
-            rm_file_input = input("Name: ")
+            os.system('ls')
+            rm_file_input = input("\nName: ")
             os.system(f"rm {rm_file_input}")
             print(f"The file named {rm_file_input} was removed.")
         
-        if rm_input == "directory" or rm_input == "dir":
-            
-            rm_directory_input = input("Name: ")
+        if rm_input == "directory":
+            os.system('ls')
+            rm_directory_input = input("\nName: ")
             os.system(f"sudo rm -r {rm_directory_input}")
             print(f"The directory named {rm_directory_input} was removed.")
+            close = input("Press enter to get home..")
+            ChangeMenu('MainMenu')
     
     def Func6():
     
@@ -51,14 +79,17 @@ class SomeOtherFuncs:
                 os.system("pwd")
             elif cd_input == "forward":
                 
-                dir_input = input("Where?: ")
+                dir_input = inquirer.list_input("\nWhere?: ", choices = os.listdir())
                 
                 os.chdir(dir_input)
-                os.system("pwd")
         except:
             if dir_input == None or dir_input == "":
                 
                 print("Invalid command! Please provide a valid argument.")
+    
+    def Func11():
+        edit_choice = inquirer.list_input('What do you want to edit?: ', choices = os.listdir())
+        os.system(f'nano {edit_choice}')
 
 class menu_item:
     ## Variabilele statice
@@ -113,6 +144,8 @@ class menu_item:
                 SomeOtherFuncs.Func9()
             elif user_input == "cd":
                 SomeOtherFuncs.Func10()
+            elif user_input == "edit":
+                SomeOtherFuncs.Func11()
             else:
                 print("Command not found!")
                     

@@ -61,7 +61,8 @@ class SomeFuncs:
             print("""\nWhat would you like to test?:""")
             test_input = input("\nTest: ")
             os.system(f"python3 {test_input}")
-            print("Test completed! (now back to the toolkit)")
+            close = input('Press enter to get home..')
+            ChangeMenu("MainMenu")
             
     def Func2():
         
@@ -81,6 +82,8 @@ class SomeFuncs:
                 name_file = input("\nWhat is the name of the file?: ")
                 os.system(f"touch {name_file}")
                 print(f"\nYour file named {name_file} was created!")
+                close = input('Press enter to get home..')
+                ChangeMenu("MainMenu")
                 
             elif choosing == "directory" or choosing == "dir":
                 
@@ -88,6 +91,8 @@ class SomeFuncs:
                 name_directory = input("What is the name of the directory?: ")
                 os.system(f"mkdir {name_directory}")
                 print(f"\nYour directory named {name_directory} was created!")
+                close = input('Press enter to get home..')
+                ChangeMenu("MainMenu")
         
         if create_input == "code": 
             
@@ -96,7 +101,8 @@ class SomeFuncs:
             code_input = input("\nWhat would you like to code?: ")
             os.system(f"code {code_input}")
             
-            finnish_input = input("Done coding? Amazing! Now press enter to go back to the toolkit...\n")
+            close = input('Press enter to get home..')
+            ChangeMenu("MainMenu")
     def Func3():
         
         ChangeMenu("HelpMenu")
@@ -134,7 +140,7 @@ def InitMenuItems():
 def InitAboutDescription():
     description = (slow_print(f'''
     {colored("This program has been developed by:","yellow")}\n
-    -{colored("Serea Alex-Valentin and a big contribuitor from Macovei Iulian","cyan")},\n
+    -{colored("Serea Alex-Valentin and a big help from Macovei Iulian","cyan")},\n
     {colored("A student of Informatics Engineering at UGAL.",'green')}\n
     \n
     {colored("For any information or feedback, please contact me through:","magenta")}\n
@@ -152,7 +158,8 @@ def InitHelpItems():
     option4 = menu_item("Type \"pwd\" to check in which directory that you are",SomeFuncs.TextPurposes,"HelpMenu")
     option5 = menu_item("Type \"cd\" to change directories",SomeFuncs.TextPurposes,"HelpMenu")
     option6 = menu_item("Type \"clear\" to clear the screen ^-^",SomeFuncs.TextPurposes,"HelpMenu")
-    option7 = menu_item("Home",SomeFuncs.Home,"HelpMenu")
+    option7 = menu_item("Type \"edit\" to edit files",SomeFuncs.TextPurposes,"HelpMenu")
+    option8 = menu_item("Home",SomeFuncs.Home,"HelpMenu")
 
 clear_screen()
 Menu.InitAllMenues()
