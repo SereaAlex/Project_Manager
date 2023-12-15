@@ -1,5 +1,6 @@
 from doctest import OPTIONFLAGS_BY_NAME
 import os
+import inquirer
 
 def clear_screen():
     
@@ -42,19 +43,22 @@ class SomeOtherFuncs:
     
     def Func10():
         
-        cd_input = input("Which direction would you like to move?(back/forw): ")
-        
-        if cd_input == "back":
-            
-            os.chdir("..")
-            
-        elif cd_input == "forw":
-            
-            dir_input = input("Where?: ")
-            
-            os.chdir(dir_input)
-                    
-
+        cd_input = inquirer.list_input("Which direction would you like to move?: ",choices = ['back','forward'])
+        try:    
+            if cd_input == "back":
+                
+                os.chdir("..")
+                os.system("pwd")
+            elif cd_input == "forward":
+                
+                dir_input = input("Where?: ")
+                
+                os.chdir(dir_input)
+                os.system("pwd")
+        except:
+            if dir_input == None or dir_input == "":
+                
+                print("Invalid command! Please provide a valid argument.")
 
 class menu_item:
     ## Variabilele statice

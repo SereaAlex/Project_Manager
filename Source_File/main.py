@@ -2,6 +2,10 @@ from menu_item import menu_item
 from Menu import Menu
 import os
 import time
+from colorama import init
+from termcolor import colored
+import inquirer
+init()
 
 def slow_print(text, delay=0.01):
     
@@ -19,7 +23,7 @@ def clear_screen():
 def PrintMenu(name:str):
     clear_screen()
     LOGO = Menu.GetMenuByName(name).logo
-    print(LOGO)
+    slow_print(LOGO,delay=0.001)
     menu_item.PrintAll(name)
 
 def ChangeMenu(name:str):
@@ -43,7 +47,8 @@ class SomeFuncs:
         else:
             
             clear_screen()
-            print("""What would you like to test?:""")
+            os.system('ls')
+            print("""\nWhat would you like to test?:""")
             test_input = input("\nTest: ")
             os.system(f"python3 {test_input}")
             print("Test completed! (now back to the toolkit)")
@@ -53,12 +58,12 @@ class SomeFuncs:
         clear_screen()
         print("""Type "create" to create a file or directory, \n or type "code" to just code ^-^""")
         
-        create_input = input("\nWhat do you choose?: ")
+        create_input = inquirer.list_input('What do you choose?: ', choices = ['create','code'])
         
         if create_input == "create":
             
             clear_screen()
-            choosing = input("\nFile or directory?: ")
+            choosing = inquirer.list_input('File or directory?: ', choices = ['file','directory'])
             
             if choosing == "file":
                 
@@ -77,7 +82,8 @@ class SomeFuncs:
         if create_input == "code": 
             
             clear_screen()
-            code_input = input("What would you like to code?: ")
+            os.system('ls')
+            code_input = input("\nWhat would you like to code?: ")
             os.system(f"code {code_input}")
             
             finnish_input = input("Done coding? Amazing! Now press enter to go back to the toolkit...\n")
@@ -85,7 +91,15 @@ class SomeFuncs:
         
         ChangeMenu("HelpMenu")
     def Func4():
-        
+        slow_print(colored("""
+                   
+░██████╗░░█████╗░░█████╗░██████╗░██████╗░██╗░░░██╗███████╗
+██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝
+██║░░██╗░██║░░██║██║░░██║██║░░██║██████╦╝░╚████╔╝░█████╗░░
+██║░░╚██╗██║░░██║██║░░██║██║░░██║██╔══██╗░░╚██╔╝░░██╔══╝░░
+╚██████╔╝╚█████╔╝╚█████╔╝██████╔╝██████╦╝░░░██║░░░███████╗
+░╚═════╝░░╚════╝░░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚══════╝""",'light_blue'),0.001)
+        clear_screen()
         exit()
         
     def TextPurposes():
@@ -95,12 +109,30 @@ class SomeFuncs:
         
         ChangeMenu("MainMenu")
     
+    def About():
+        
+        ChangeMenu("AboutMenu")
+        InitAboutDescription()
 def InitMenuItems():
     
     option1 = menu_item("Testing",SomeFuncs.Func1,"MainMenu")
     option2 = menu_item("Create and code",SomeFuncs.Func2,"MainMenu")
     option3 = menu_item("Help",SomeFuncs.Func3,"MainMenu")
+    option4 = menu_item("About",SomeFuncs.About,"MainMenu")
     option4 = menu_item("Exit",SomeFuncs.Func4,"MainMenu")
+
+def InitAboutDescription():
+    description = (slow_print(f'''
+    {colored("This program has been developed by:","yellow")}\n
+    -{colored("Serea Alex-Valentin and a big contribuitor from Macovei Iulian","cyan")},\n
+    {colored("A student of Informatics Engineering at UGAL.",'green')}\n
+    \n
+    {colored("For any information or feedback, please contact me through:","magenta")}\n
+    \n
+    Github:\t{colored("https://github.com/SereaAlex","white")}\n
+    Email:\t{colored("alex.serea1156@gmail.com","red")}
+    ''',delay = 0.001),SomeFuncs.TextPurposes,"AboutMenu")
+    option = menu_item("Home",SomeFuncs.Home,"AboutMenu")
 
 def InitHelpItems():
     
