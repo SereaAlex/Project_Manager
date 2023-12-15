@@ -5,6 +5,16 @@ import time
 from colorama import init
 from termcolor import colored
 import inquirer
+import readline
+import glob
+
+def custom_completer(text, state):
+    matches = glob.glob(text + '*')
+    return (matches + [None])[state]
+
+readline.set_completer(custom_completer)
+readline.parse_and_bind("tab: complete")
+
 init()
 
 def slow_print(text, delay=0.01):
