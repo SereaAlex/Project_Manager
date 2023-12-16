@@ -8,6 +8,8 @@ The bash commands inside the toolkit are:
 2. pwd
 3. rm
 4. clear
+5. cd
+6. edit
 
 It's open to anyone who wants to check and I'm open for sugestions.
 Is written in Python and bash here and there.
