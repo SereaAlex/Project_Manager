@@ -1,5 +1,6 @@
 from doctest import OPTIONFLAGS_BY_NAME
 import os
+from termcolor import colored
 import inquirer
 import Menu
 import time
@@ -56,8 +57,9 @@ class SomeOtherFuncs:
         os.system("ls")
     
     def Func7():
-    
+    #new error created when Exit from here?
         clear_screen()
+        print(colored(f"You are in: {menu_item.Curr_Menu}",'light_yellow'))
     
     def Func8():
         
@@ -71,24 +73,24 @@ class SomeOtherFuncs:
     
     def Func10():
         
-        cd_input = inquirer.list_input("Which direction would you like to move?: ",choices = ['back','forward'])
-        try:    
-            if cd_input == "back":
+        cd_input = inquirer.list_input("Which direction would you like to move",choices = ['back','forward']) 
+        if cd_input == "back":
                 
-                os.chdir("..")
-                os.system("pwd")
-            elif cd_input == "forward":
-                
-                dir_input = inquirer.list_input("\nWhere?: ", choices = os.listdir())
-                
-                os.chdir(dir_input)
-        except:
-            if dir_input == None or dir_input == "":
-                
-                print("Invalid command! Please provide a valid argument.")
+            os.chdir("..")
+            os.system("pwd")
+        
+        elif cd_input == "forward":
+            questions = [
+                inquirer.List('dir',
+                message="Where",
+                choices= os.listdir(),
+            )]
+            answers = inquirer.prompt(questions)
+            os.chdir(answers['dir'])
+            os.system("pwd")
     
     def Func11():
-        edit_choice = inquirer.list_input('What do you want to edit?: ', choices = os.listdir())
+        edit_choice = inquirer.list_input('What do you want to edit', choices = os.listdir())
         os.system(f'nano {edit_choice}')
 
 class menu_item:
@@ -125,7 +127,7 @@ class menu_item:
                 CurrOptions[option_index].funct()
             else:
                 print("Invalid option number!")
-        except ValueError:
+        except:
             ## Exec by name
             for option in CurrOptions:
                 if option.name == user_input:
