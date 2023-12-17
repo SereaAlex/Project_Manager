@@ -57,6 +57,7 @@ class SomeOtherFuncs:
         os.system("ls")
     
     def Func7():
+
         clear_screen()
         print(colored(f"You are in: {menu_item.Curr_Menu}",'light_yellow'))
     
