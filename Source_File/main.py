@@ -97,10 +97,13 @@ class SomeFuncs:
         if create_input == "code": 
             
             clear_screen()
-            os.system('ls')
-            code_input = input("\nWhat would you like to code?: ")
-            os.system(f"code {code_input}")
-            
+            questions = [
+                inquirer.List('py',
+                message="What would you like to code",
+                choices= os.listdir(),
+            )]
+            answers = inquirer.prompt(questions)
+            os.system(f"code {answers['py']}")
             close = input('Press enter to get home..')
             ChangeMenu("MainMenu")
     def Func3():
@@ -120,7 +123,8 @@ class SomeFuncs:
         
         
     def TextPurposes():
-        pass
+        
+        print('This is for Text Purposes')
     
     def Home():
         
