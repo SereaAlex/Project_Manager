@@ -97,9 +97,13 @@ class SomeFuncs:
         if create_input == "code": 
             
             clear_screen()
-            os.system('ls')
-            code_input = input("\nWhat would you like to code?: ")
-            os.system(f"code {code_input}")
+            questions = [
+                inquirer.List('py',
+                message="What would you like to code",
+                choices= os.listdir(),
+            )]
+            answers = inquirer.prompt(questions)
+            os.system(f"code {answers['py']}")
             
             close = input('Press enter to get home..')
             ChangeMenu("MainMenu")
@@ -118,6 +122,7 @@ class SomeFuncs:
         clear_screen()
         exit()
         
+        
     def TextPurposes():
         pass
     
@@ -135,7 +140,7 @@ def InitMenuItems():
     option2 = menu_item("Create and code",SomeFuncs.Func2,"MainMenu")
     option3 = menu_item("Help",SomeFuncs.Func3,"MainMenu")
     option4 = menu_item("About",SomeFuncs.About,"MainMenu")
-    option4 = menu_item("Exit",SomeFuncs.Func4,"MainMenu")
+    option5 = menu_item("Exit",SomeFuncs.Func4,"MainMenu")
 
 def InitAboutDescription():
     description = (slow_print(f'''
@@ -169,6 +174,6 @@ InitMenuItems()
 PrintMenu("MainMenu")
 
 while True:
-    
+    #why raw_input is not defined?
     user_input = input("Type: ")
     menu_item.TryExec(user_input)

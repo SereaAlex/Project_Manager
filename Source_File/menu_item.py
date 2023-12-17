@@ -57,7 +57,6 @@ class SomeOtherFuncs:
         os.system("ls")
     
     def Func7():
-    #new error created when Exit from here?
         clear_screen()
         print(colored(f"You are in: {menu_item.Curr_Menu}",'light_yellow'))
     
