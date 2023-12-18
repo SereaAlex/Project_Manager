@@ -2,40 +2,43 @@ from doctest import OPTIONFLAGS_BY_NAME
 import os
 from termcolor import colored
 import inquirer
-import Menu
+from Menu import Menu
 import time
-def clear_screen():
-    
-    os.system('cls' if os.name == 'nt' else 'clear')
 
-def slow_print(text, delay=0.01):
-    
-    for char in text:
+class Settings:
+
+    def clear_screen():
         
-        print(char, end='', flush=True)
-        time.sleep(delay)
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def slow_print(text, delay=0.01):
         
-    print()
+        for char in text:
+            
+            print(char, end='', flush=True)
+            time.sleep(delay)
+            
+        print()
 
-def PrintMenu(name:str):
-    clear_screen()
-    LOGO = Menu.GetMenuByName(name).logo
-    slow_print(LOGO,delay=0.001)
-    menu_item.PrintAll(name)
+    def PrintMenu(name:str):
+        Settings.clear_screen()
+        LOGO = Menu.GetMenuByName(name).logo
+        Settings.slow_print(LOGO,delay=0.001)
+        menu_item.PrintAll(name)
 
-def ChangeMenu(name:str):
-    clear_screen()
-    menu_item.Curr_Menu = name
-    PrintMenu(name)
+    def ChangeMenu(name:str):
+        Settings.clear_screen()
+        menu_item.Curr_Menu = name
+        Settings.PrintMenu(name)
 
-def Home():
+    def Home():
+            
+        Settings.ChangeMenu("MainMenu")
+
+class SecondFunctions:
+    def remove():
         
-    ChangeMenu("MainMenu")
-
-class SomeOtherFuncs:
-    def Func5():
-        
-        clear_screen()
+        Settings.clear_screen()
         rm_input = inquirer.list_input("Do you want to remove a file or a directory?: ", choices = ['file', 'directory'])
         
         if rm_input == "file":
@@ -50,28 +53,28 @@ class SomeOtherFuncs:
             os.system(f"sudo rm -r {rm_directory_input}")
             print(f"The directory named {rm_directory_input} was removed.")
             close = input("Press enter to get home..")
-            ChangeMenu('MainMenu')
+            Settings.ChangeMenu('MainMenu')
     
-    def Func6():
+    def list():
     
         os.system("ls")
     
-    def Func7():
+    def clear_check():
 
-        clear_screen()
+        Settings.clear_screen()
         print(colored(f"You are in: {menu_item.Curr_Menu}",'light_yellow'))
     
-    def Func8():
+    def local():
         
         os.system("pwd")
         
-    def Func9():
+    def move():
         
         path_input = input("Enter the full path of the file/folder that you would like to move:\n")
         dest_path_input = input("\nEnter the destination folder's full path:\n")
         os.system(f"mv {path_input} {dest_path_input}")
     
-    def Func10():
+    def cd():
         
         cd_input = inquirer.list_input("Which direction would you like to move",choices = ['back','forward']) 
         if cd_input == "back":
@@ -89,11 +92,11 @@ class SomeOtherFuncs:
             os.chdir(answers['dir'])
             os.system("pwd")
     
-    def Func11():
+    def edit():
         edit_choice = inquirer.list_input('What do you want to edit', choices = os.listdir())
         os.system(f'nano {edit_choice}')
         
-    def Func12():
+    def cat():
         
         questions = [
             inquirer.List('file',
@@ -146,22 +149,20 @@ class menu_item:
                     return
             ##
             if user_input == "rm":
-                SomeOtherFuncs.Func5()
+                SecondFunctions.remove()
             elif user_input == "ls":
-                SomeOtherFuncs.Func6()
+                SecondFunctions.list()
             elif user_input == "clear":
-                SomeOtherFuncs.Func7()
+                SecondFunctions.clear_check()
             elif user_input == "pwd":
-                SomeOtherFuncs.Func8()
+                SecondFunctions.local()
             elif user_input == "mv":
-                SomeOtherFuncs.Func9()
+                SecondFunctions.move()
             elif user_input == "cd":
-                SomeOtherFuncs.Func10()
+                SecondFunctions.cd()
             elif user_input == "edit":
-                SomeOtherFuncs.Func11()
+                SecondFunctions.edit()
             elif user_input == "cat":
-                SomeOtherFuncs.Func12()
+                SecondFunctions.cat()
             else:
                 print("Command not found!")
-                    
-
