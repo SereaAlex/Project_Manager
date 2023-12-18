@@ -57,10 +57,14 @@ class SomeFuncs:
         else:
             
             clear_screen()
-            os.system('ls')
-            print("""\nWhat would you like to test?:""")
-            test_input = input("\nTest: ")
-            os.system(f"python3 {test_input}")
+            questions = [
+                inquirer.List('py',
+                message="What would you like to test",
+                choices= os.listdir(),
+            )]
+            answers = inquirer.prompt(questions)
+            a = answers['py']
+            os.system(f"python3 {a}")
             close = input('Press enter to get home..')
             ChangeMenu("MainMenu")
             
