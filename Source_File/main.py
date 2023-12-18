@@ -149,7 +149,7 @@ def InitMenuItems():
 def InitAboutDescription():
     description = (slow_print(f'''
     {colored("This program has been developed by:","yellow")}\n
-    -{colored("Serea Alex-Valentin and a big help from Macovei Iulian","cyan")},\n
+    -{colored("Serea Alex-Valentin and a big contribution from Macovei Iulian","cyan")},\n
     {colored("A student of Informatics Engineering at UGAL.",'green')}\n
     \n
     {colored("For any information or feedback, please contact me through:","magenta")}\n
