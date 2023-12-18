@@ -55,7 +55,7 @@ class Functions(Menu):
         option2 = menu_item("Create and code",Options.Create,"MainMenu")
         option3 = menu_item("Help",Options.Help,"MainMenu")
         option4 = menu_item("About",Options.About,"MainMenu")
-        option4 = menu_item("Exit",Options.Exiting,"MainMenu")
+        option5 = menu_item("Exit",Options.Exiting,"MainMenu")
 
     
     def InitHelpItems():
