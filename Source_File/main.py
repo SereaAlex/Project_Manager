@@ -22,5 +22,13 @@ Functions.InitMenuItems()
 Functions.PrintMenu("MainMenu")
 
 while True:
-    user_input = input("Type: ")
-    menu_item.TryExec(user_input)
+    
+    try:
+    
+        user_input = input("Type: ")
+        menu_item.TryExec(user_input)
+        
+    except:
+        
+        Functions.clear_screen()
+        break
