@@ -19,6 +19,7 @@ Functions.clear_screen()
 Menu.InitAllMenues()
 Functions.InitHelpItems()
 Functions.InitMenuItems()
+Functions.InitAboutDescription()
 Functions.PrintMenu("MainMenu")
 
 while True:

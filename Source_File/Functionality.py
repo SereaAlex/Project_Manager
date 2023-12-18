@@ -32,8 +32,8 @@ class Functions(Menu):
         menu_item.Curr_Menu = name
         Functions.PrintMenu(name)
         
-    
-    def InitAboutDescription():
+    def PrintAbout():
+        
         description = (Functions.slow_print(f'''
         {colored("This program has been developed by:","yellow")}\n
         -{colored("Serea Alex-Valentin and a big contribution from Macovei Iulian","cyan")},\n
@@ -44,6 +44,9 @@ class Functions(Menu):
         Github:\t{colored("https://github.com/SereaAlex","white")}\n
         Email:\t{colored("alex.serea1156@gmail.com","red")}
         ''',delay = 0.001),Options.TextPurposes,"AboutMenu")
+    
+    def InitAboutDescription():
+
         option = menu_item("Home",Options.Home,"AboutMenu")
         
     def InitMenuItems():
@@ -153,7 +156,7 @@ class Options:
     def About():
         
         Functions.ChangeMenu("AboutMenu")
-        Functions.InitAboutDescription()
+        Functions.PrintAbout()
         
     def Exiting():
         Functions.slow_print(colored("""
