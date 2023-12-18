@@ -92,6 +92,17 @@ class SomeOtherFuncs:
     def Func11():
         edit_choice = inquirer.list_input('What do you want to edit', choices = os.listdir())
         os.system(f'nano {edit_choice}')
+        
+    def Func12():
+        
+        questions = [
+            inquirer.List('file',
+            message = 'What do you want to read',
+            choices = os.listdir()
+            )]
+        answers = inquirer.prompt(questions)
+        a = answers['file']
+        os.system(f'cat {a}')
 
 class menu_item:
     ## Variabilele statice
@@ -148,6 +159,8 @@ class menu_item:
                 SomeOtherFuncs.Func10()
             elif user_input == "edit":
                 SomeOtherFuncs.Func11()
+            elif user_input == "cat":
+                SomeOtherFuncs.Func12()
             else:
                 print("Command not found!")
                     

@@ -165,7 +165,8 @@ def InitHelpItems():
     option6 = menu_item("Type \"clear\" to clear the screen ^-^",SomeFuncs.TextPurposes,"HelpMenu")
     option7 = menu_item("Type \"edit\" to edit files",SomeFuncs.TextPurposes,"HelpMenu")
     option8 = menu_item("Type \"mv\" to move or rename files or directories",SomeFuncs.TextPurposes,"HelpMenu")
-    option9 = menu_item("Home",SomeFuncs.Home,"HelpMenu")
+    option9 = menu_item("Type \"cat\" to read files", SomeFuncs.TextPurposes,"HelpMenu")
+    option10 = menu_item("Home",SomeFuncs.Home,"HelpMenu")
 
 clear_screen()
 Menu.InitAllMenues()
