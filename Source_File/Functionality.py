@@ -90,7 +90,7 @@ class Options:
             questions = [
                 inquirer.List('py',
                 message="What would you like to test",
-                choices= os.listdir(),
+                choices= sorted(os.listdir()),
             )]
             answers = inquirer.prompt(questions)
             a = answers['py']
