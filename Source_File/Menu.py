@@ -1,17 +1,6 @@
-﻿import time
-from colorama import init
+﻿from colorama import init
 from termcolor import colored
-
 init()
-
-def slow_print(text, delay=0.01):
-    
-    for char in text:
-        
-        print(char, end='', flush=True)
-        time.sleep(delay)
-        
-    print()
 
 class Menu:
     lista_de_meniuri = []
@@ -84,6 +73,3 @@ class Menu:
         ╚═════╝░╚══════╝░╚════╝░░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝
         ''','blue')
         menu3 = Menu("AboutMenu",AboutMenuLogo)
-        
-
-

@@ -5,6 +5,7 @@ import inquirer
 from Menu import Menu
 import time
 
+
 class Settings:
 
     def clear_screen():
@@ -86,14 +87,14 @@ class SecondFunctions:
             questions = [
                 inquirer.List('dir',
                 message="Where",
-                choices= os.listdir(),
+                choices= sorted(os.listdir()),
             )]
             answers = inquirer.prompt(questions)
             os.chdir(answers['dir'])
             os.system("pwd")
     
     def edit():
-        edit_choice = inquirer.list_input('What do you want to edit', choices = os.listdir())
+        edit_choice = inquirer.list_input('What do you want to edit', choices = sorted(os.listdir()))
         os.system(f'nano {edit_choice}')
         
     def cat():
@@ -101,7 +102,7 @@ class SecondFunctions:
         questions = [
             inquirer.List('file',
             message = 'What do you want to read',
-            choices = os.listdir()
+            choices = sorted(os.listdir())
             )]
         answers = inquirer.prompt(questions)
         a = answers['file']

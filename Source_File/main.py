@@ -3,7 +3,7 @@ from Menu import Menu
 from colorama import init
 import readline
 import glob
-from Functionality import Functions, Options
+from Functionality import Functions
 
 def custom_completer(text, state):
     matches = glob.glob(text + '*')

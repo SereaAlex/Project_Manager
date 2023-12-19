@@ -4,7 +4,6 @@ from Menu import Menu
 from menu_item import menu_item
 import time
 from termcolor import colored
-# from main import Display
 
 class Functions(Menu):
     
@@ -134,7 +133,7 @@ class Options:
             questions = [
                 inquirer.List('py',
                 message="What would you like to code",
-                choices= os.listdir(),
+                choices= sorted(os.listdir()),
             )]
             answers = inquirer.prompt(questions)
             os.system(f"code {answers['py']}")
@@ -169,5 +168,3 @@ class Options:
 ░╚═════╝░░╚════╝░░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚══════╝""",'light_blue'),0.001)
         Functions.clear_screen()
         exit()
-        
-
